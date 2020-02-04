@@ -45,7 +45,12 @@
           	//-->
           	</script>
           $(endif)
-          <form class="uk-form-stacked" method="post" action="$(link-login-only)">
+
+          $(if error)
+            <div class="uk-alert-danger" uk-alert>Whoops, $(error)</div>
+          $(endif)
+
+          <form class="uk-form-stacked" method="post" action="$(link-login-only)" $(if chap-id) onsubmit="return doLogin()" $(endif)>
             <input type="hidden" name="dst" value="$(link-orig)" />
 						<input type="hidden" name="popup" value="true" />
             <div class="uk-margin-medium">
